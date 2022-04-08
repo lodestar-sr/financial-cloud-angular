@@ -1,0 +1,51 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<mat-toolbar color="primary" class="app-toolbar">
+  <div style="display: flex; flex-direction: row; width: 100%">
+    <img
+      class="logo"
+      [src]="'../assets/img/financialCloud.png'"
+      alt="logo"
+      (click)="isOpenSideNavBar ? drawer.toggle() : undefined"
+    />
+
+    <div class="toolbar-row">
+      <span style="font-size: 22px">Pokemon Details</span>
+    </div>
+
+    <div class="toolbar-row" style="display: inline">
+      <span>
+        <strong>Financial Cloud</strong>
+      </span>
+      <span> - {{ pageTitle }} </span>
+    </div>
+    <div class="toolbar-row toolbar-login">
+      <button mat-button [routerLink]="['/login']">Login</button>
+    </div>
+  </div>
+</mat-toolbar>
+<mat-sidenav-container fullScreen class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewPort="true"
+    [opened]="isOpenSideNavBar"
+    (click)="onNavbarClicked()"
+  >
+    <mat-nav-list>
+      <a mat-list-item routerLink="/financial-cloud">Pokemon Details </a>
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+    <mat-divider></mat-divider>
+
+    <mat-divider></mat-divider>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+    <router-outlet></router-outlet>
+    <div *ngIf="allowFooter" class="app-footer">
+      <span>Developed By</span>
+      <span>Sagar Adhikari</span>
+      <span style="font-size: 10px">ph. No: 9843650962</span>
+      <span style="font-size: 10px">email: sgradhikari48@gmail.com</span>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
